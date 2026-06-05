@@ -1,3 +1,5 @@
+import "../styles/AttendeeCard.css"
+
 function AttendeeCard(
     {
         attendee,
@@ -5,12 +7,12 @@ function AttendeeCard(
     }
 ) {
     return (
-        <div className="card">
+        <div className="attendee-card">
 
             <h3>{attendee.name}</h3>
-            <p>{attendee.role}</p>
+            <p className="attendee-role">{attendee.role}</p>
 
-            <p>
+            <p className="attendee-status">
                 Status:
                 {" "}
                 <strong>
@@ -23,6 +25,12 @@ function AttendeeCard(
             </p>
 
             <button
+                className={`attendee-button
+                    ${attendee.registered
+                    ? "registered-button"
+                    : "cancelled-button"
+                    } 
+                `}
                 onClick={() => onToggleStatus(attendee.id)}
             >
                 {
